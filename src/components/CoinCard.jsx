@@ -1,7 +1,8 @@
 import React from 'react'
-
+import { Link } from 'react-router'
 function CoinCard({coin}) {
   return (
+    <Link to={`/coin/${coin.id}`}>
     <div className="coin-card" key={coin.id}>
               <div className="coin-header">
                 <img src={coin.image} alt={coin.name} className="coin-image" />
@@ -24,6 +25,7 @@ function CoinCard({coin}) {
                 Market Cap: {coin.market_cap.toLocaleString()}
               </p>
             </div>
+            </Link>
   )
 }
 
