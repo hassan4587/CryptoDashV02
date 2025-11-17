@@ -3,7 +3,7 @@ import CoinCard from "../components/CoinCard";
 import FilterInput from "../components/FilterInput";
 import LimitSelector from "../components/LimitSelector";
 import SortSelector from "../components/SortSelector";
-
+import Spinner from "../components/Spinner";
 function HomePage({
   coins,
   filter,
@@ -49,13 +49,14 @@ function HomePage({
   return (
     <div>
       <h1>🚀 CryptoDash</h1>
-      {loading && <p>Loading...</p>}
-      {error && <div className="error">{error}</div>}
+      
       <div className="top-controls">
         <FilterInput filter={filter} onFilterCahnge={setFilter} />
         <LimitSelector limit={limit} onLimitChange={setLimit} />
         <SortSelector sortBy={sortBy} onSortChange={setSortBy} />
       </div>
+      {loading && <Spinner/>}  
+      {error && <div className="error">{error}</div>}
       {!loading && !error && (
         <main className="grid">
           {filteredCoins.length > 0 ? (
